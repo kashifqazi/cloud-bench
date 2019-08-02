@@ -9,7 +9,7 @@ do
   count=`expr $count + 1`
   if [ $count -ge 800 ]
   then
-    brek
+    break
   fi
   eval "sudo cpulimit -i -l $result stress-ng --memcpy 1 -t 10 --times --metrics-brief --perf --log-file stats"
 
