@@ -1,16 +1,17 @@
 #!/bin/bash
-input="Host0"
+input="Host4"
+count=0
 while IFS= read -r line
 do
   result=$(bc -l <<<"${line}*100")
   echo "$result"
-  #$line=$(($line*100))
-  #eval "cpulimit -l $result mbw 1024 -n 100 &"
-  #pid=$!
-  #sleep 30s
-  #eval "kill -9 $pid"
 
-  eval "sudo cpulimit -i -l $result stress-ng --memcpy 1 -t 30 -v --times --metrics-brief --perf"
- 
+  count=`expr $count + 1`
+  if [ $count -ge 800 ]
+  then
+    brek
+  fi
+  eval "sudo cpulimit -i -l $result stress-ng --memcpy 1 -t 10 --times --metrics-brief --perf --log-file stats"
+
 done < "$input"
 
