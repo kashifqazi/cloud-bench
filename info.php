@@ -19,7 +19,6 @@ while(! feof($file2))
 fclose($file2);
 
 $counter = count($dataPoints2) - count($dataPoints);
-echo $counter;
 for ($i = 1; $i <= $counter; $i++) {
     array_push($dataPoints, array("y" => 0, "label" => "123"));
 }
