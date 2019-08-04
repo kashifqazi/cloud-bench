@@ -8,6 +8,10 @@ sudo apt install libaio-dev libapparmor-dev libattr1-dev libbsd-dev libcap-dev l
 sudo apt install make gcc
 make
 cd ..
+cd atop
+sudo apt install libncurses5-dev
+make
+cd ..
 cd cpulimit
 make
 sudo cp src/cpulimit /usr/bin/cpulimit
