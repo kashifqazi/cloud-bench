@@ -576,7 +576,7 @@ static const char *perf_stat_scale(const uint64_t counter, const double duration
 	}
 	scaled /= scale;
 
-	(void)snprintf(buffer, sizeof(buffer), "%11.2f %-5s",
+	(void)snprintf(buffer, sizeof(buffer), "%f %s",
 		scaled, suffix);
 
 	return buffer;
@@ -672,9 +672,13 @@ void perf_stat_dump(FILE *yaml, proc_info_t *procs_head, const double duration)
 							100.0 * (double)ct / (double)total_branches);
 				}
 
-				pr_inf("%'26" PRIu64 " %-24s %s%s\n",
-					ct, l, perf_stat_scale(ct, duration),
-					extra);
+				//pr_inf("%'26" PRIu64 " %-24s %s%s\n",
+				//	ct, l, perf_stat_scale(ct, duration),
+				//	extra);
+
+				printf("%lu (%s%s),",
+                                        ct, perf_stat_scale(ct, duration),
+                                        extra);
 
 				perf_yaml_label(yaml_label, l, sizeof(yaml_label));
 				pr_yaml(yaml, "      %s_total: %" PRIu64
