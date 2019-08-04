@@ -553,7 +553,7 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 	char			timebuf[16], datebuf[16];
 	int			i, nr = numreports, rv;
 	static unsigned int	curline, headline;
-
+	//Kashif
 	/*
 	** printing more reports needs another way of handling compared
 	** to printing one report
@@ -566,7 +566,7 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 		if (sampcnt == 0)
 			return;
 
-		printf(datemsg, convdate(curtime, datebuf));
+		//printf(datemsg, convdate(curtime, datebuf));
 
 		for (i=0; i < pricnt && nr > 0; i++)
 		{
@@ -578,24 +578,24 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 			/*
 			** print header-line
 			*/
-			printf("\n");
+		//	printf("\n");
 
-			if (usecolors)
-				printf(COLSETHEAD);
+		//	if (usecolors)
+		//		printf(COLSETHEAD);
 
-			printf("%s  ", convtime(curtime-numsecs, timebuf));
+		//	printf("%s  ", convtime(curtime-numsecs, timebuf));
 	
 			(pridef[i].prihead)(osvers, osrel, ossub);
 	
-			if (usecolors)
-				printf(COLRESET);
+		//	if (usecolors)
+		//		printf(COLRESET);
 
-			printf("\n");
+		//	printf("\n");
 
 			/*
 			** print line with statistical counters
 			*/
-			printf("%s  ", convtime(curtime, timebuf));
+		//	printf("%s  ", convtime(curtime, timebuf));
 	
 			if ( !(pridef[i].priline)(ss, (struct tstat *)0, 0, 0,
 				numsecs, numsecs*hertz, hertz,
@@ -614,7 +614,7 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 			}
 		}
 
-		printf("\n");
+		//printf("\n");
 	}
 	else		/* just one report to be printed */
 	{
@@ -630,7 +630,7 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 		*/
 		if (curtime > daylim)
 		{
-			printf(datemsg, convdate(curtime, datebuf));
+		//	printf(datemsg, convdate(curtime, datebuf));
 			daylim = daylimit(curtime);
 			curline++;
 		}
@@ -643,19 +643,19 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 			/*
 			** print header-line
 			*/
-			printf("\n");
+		//	printf("\n");
 
-			if (usecolors)
-				printf(COLSETHEAD);
+		//	if (usecolors)
+		//		printf(COLSETHEAD);
 
-			printf("%s  ", convtime(curtime, timebuf));
+		//	printf("%s  ", convtime(curtime, timebuf));
 	
 			(pridef[i].prihead)(osvers, osrel, ossub);
 
-			if (usecolors)
-				printf(COLRESET);
+		//	if (usecolors)
+		//		printf(COLRESET);
 
-			printf("\n");
+		//	printf("\n");
 
 			curline+=2;
 
@@ -666,7 +666,7 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 		/*
 		** print line with statistical counters
 		*/
-		printf("%s  ", convtime(curtime, timebuf));
+		//printf("%s  ", convtime(curtime, timebuf));
 	
 		if ( !(rv = (pridef[i].priline)(ss, (struct tstat *)0, 0, 0,
 					numsecs, numsecs*hertz, hertz,
@@ -690,19 +690,19 @@ reportlive(time_t curtime, int numsecs, struct sstat *ss)
 			/*
 			** print header-line
 			*/
-			printf("\n");
+		//	printf("\n");
 
-			if (usecolors)
-				printf(COLSETHEAD);
+		//	if (usecolors)
+		//		printf(COLSETHEAD);
 
-			printf("%s  ", convtime(curtime, timebuf));
+		//	printf("%s  ", convtime(curtime, timebuf));
 	
 			(pridef[i].prihead)(osvers, osrel, ossub);
 
-			if (usecolors)
-				printf(COLRESET);
+		//	if (usecolors)
+		//		printf(COLRESET);
 
-			printf("\n");
+		//	printf("\n");
 
 			curline+=2;
 		}
@@ -1207,8 +1207,8 @@ do_atopsarflags(char *val)
 static void
 cpuhead(int osvers, int osrel, int ossub)
 {
-	printf("cpu  %%usr %%nice %%sys %%irq %%softirq  %%steal %%guest "
-	       " %%wait %%idle  _cpu_");
+	//Kashifprintf("cpu  %%usr %%nice %%sys %%irq %%softirq  %%steal %%guest "
+	//       " %%wait %%idle  _cpu_");
 }
 
 static int
@@ -1238,8 +1238,9 @@ cpuline(struct sstat *ss, struct tstat *ts, struct tstat **ps, int nactproc,
 	else
 		badness = 0;
 
-	preprint(badness);
+	//preprint(badness);
 
+	/*Kashif
 	printf("all %5.0lf %5.0lf %4.0lf %4.0lf %8.0lf %7.0f %6.0f %6.0lf %5.0lf",
                 (double) (ss->cpu.all.utime * 100.0) / cputot * ss->cpu.nrcpu,
                 (double) (ss->cpu.all.ntime * 100.0) / cputot * ss->cpu.nrcpu,
@@ -1250,12 +1251,18 @@ cpuline(struct sstat *ss, struct tstat *ts, struct tstat **ps, int nactproc,
                 (double) (ss->cpu.all.guest * 100.0) / cputot * ss->cpu.nrcpu,
                 (double) (ss->cpu.all.wtime * 100.0) / cputot * ss->cpu.nrcpu,
                 (double) (ss->cpu.all.itime * 100.0) / cputot * ss->cpu.nrcpu);
+	*/
 
-	postprint(badness);
+	printf("%lf,",
+                (double) (ss->cpu.all.utime * 100.0) / cputot * ss->cpu.nrcpu);
+
+	//postprint(badness);
 
 	/*
 	** print per-cpu statistics
 	*/
+
+	/*
 	if (ss->cpu.nrcpu > 1)
 	{
 		for (i=0; i < ss->cpu.nrcpu; i++)
@@ -1266,7 +1273,7 @@ cpuline(struct sstat *ss, struct tstat *ts, struct tstat **ps, int nactproc,
                  	         ss->cpu.cpu[i].Stime + ss->cpu.cpu[i].steal;
 
 			if (cputot == 0)
-				cputot = 1;	/* avoid divide-by-zero */
+				cputot = 1;	// avoid divide-by-zero 
 
 			if (cpubadness)
 				badness = ((cputot - ss->cpu.cpu[i].itime -
@@ -1297,6 +1304,8 @@ cpuline(struct sstat *ss, struct tstat *ts, struct tstat **ps, int nactproc,
 			nlines++;
 		}
 	}
+
+	*/
 
 	return nlines;
 }
@@ -1466,8 +1475,8 @@ taskline(struct sstat *ss, struct tstat *ts, struct tstat **ps, int nactproc,
 static void
 memhead(int osvers, int osrel, int ossub)
 {
-	printf("memtotal memfree buffers cached dirty slabmem"
-	       "  swptotal swpfree _mem_"             );
+	//printf("memtotal memfree buffers cached dirty slabmem"
+	//       "  swptotal swpfree _mem_"             );
 }
 
 static int
@@ -1495,6 +1504,8 @@ memline(struct sstat *ss, struct tstat *ts, struct tstat **ps, int nactproc,
 
 	preprint(mbadness >= sbadness ? mbadness : sbadness);
 
+	/*
+	Kashif
 	printf("%7lldM %6lldM %6lldM %5lldM %4lldM %6lldM  %7lldM %6lldM",
 		ss->mem.physmem   * (pagesize / 1024) /1024,
 		ss->mem.freemem   * (pagesize / 1024) /1024,
@@ -1504,6 +1515,11 @@ memline(struct sstat *ss, struct tstat *ts, struct tstat **ps, int nactproc,
 		ss->mem.slabmem   * (pagesize / 1024) /1024,
 		ss->mem.totswap   * (pagesize / 1024) /1024,
 		ss->mem.freeswap  * (pagesize / 1024) /1024);
+	*/
+
+
+	printf("%lld",
+                (ss->mem.physmem   * (pagesize / 1024) /1024) - (ss->mem.freemem   * (pagesize / 1024) /1024));
 
 	postprint(mbadness >= sbadness ? mbadness : sbadness);
 
