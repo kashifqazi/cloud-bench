@@ -2,7 +2,7 @@ sudo apt update
 sudo apt install apache2
 sudo apt install php libapache2-mod-php php-mysql
 git clone https://github.com/opsengine/cpulimit.git
-sudo cp ./info.php /var/www/html/info.php
+sudo cp ./*.php /var/www/html/
 cd stress-ng
 sudo apt install libaio-dev libapparmor-dev libattr1-dev libbsd-dev libcap-dev libgcrypt11-dev libipsec-mb-dev libkeyutils-dev libsctp-dev zlib1g-dev
 sudo apt install make gcc
