@@ -99,6 +99,11 @@ chart2.render()
 </script>
 </head>
 <body>
+<div class="header">
+  <h1>Model Cloud</h1>
+  <p>The cloud workload modeling tool &copy Kashifuddin Qazi (kqazi01@manhattan.edu)</p>
+</div>
+
 <div class="topnav">
   <a href="home.php">Home</a>
   <a href="perf.php">Performance Stats</a>
