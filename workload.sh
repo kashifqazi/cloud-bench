@@ -1,6 +1,10 @@
 #!/bin/bash
 input="Host4"
 count=0
+echo "Host:Host4" > config
+echo "Mem:16" >> config
+echo "Scale:300" >> config
+
 atop/atopsar -c -m 5 15000 > logs &
 while IFS= read -r line
 do
