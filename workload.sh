@@ -1,7 +1,7 @@
 #!/bin/bash
 input="Host4"
 count=0
-atop/atopsar -c 5 1500 > logs &
+atop/atopsar -c -m 5 1500 > logs &
 while IFS= read -r line
 do
   result=$(bc -l <<<"${line}*100")

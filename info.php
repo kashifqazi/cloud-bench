@@ -1,11 +1,31 @@
 <?php
-$file = fopen("/home/ubuntu/Benchmarking/cloud-bench/cleanlogs","r");
-$file2 = fopen("/home/ubuntu/Benchmarking/cloud-bench/Host4","r");
+
+
+$file = fopen("/home/ubuntu/cloud-bench/logs","r");
+$file2 = fopen("/home/ubuntu/cloud-bench/Host4","r");
 
 $dataPoints = [];
+$counter = 0;
+$runcpu = 0;
+$headers = 0;
 while(! feof($file))
   {
-  array_push($dataPoints, array("y" => floatval(fgets($file)), "label" => "123"));
+  if ($headers < 3){
+        fgets($file);
+        $headers = $headers + 1;
+        continue;
+  }
+  $runcpu = $runcpu + floatval(explode(",", fgets($file))[0]);
+  echo $runcpu;
+  echo "\n";
+  if ($counter < 1){
+        $counter = $counter + 1;
+  }
+  else{
+        $counter = 0;
+        array_push($dataPoints, array("y" => ($runcpu/2), "label" => "123"));
+        $runcpu = 0;
+  }
   }
 
 fclose($file);
