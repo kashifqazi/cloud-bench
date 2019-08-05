@@ -21,7 +21,7 @@ do
   memory=`expr $result*1024*1024*1024*mem/100`
   unit="b"
   eval "sudo cpulimit -i -l $result stress-ng/stress-ng --vm 1 --vm-bytes $memory$unit -t $scale --times --metrics-brief --perf --log-brief >> stats"
-  #echo "\n" >> stats
+  echo "\n" >> stats
   #cat stats >> statscomplete
 done < "$input"
 
