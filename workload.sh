@@ -1,5 +1,5 @@
 #!/bin/bash
-input=$1
+input="traces/"$1
 mem=$2
 scale=$3
 count=0
