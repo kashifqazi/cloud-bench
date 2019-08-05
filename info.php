@@ -8,6 +8,7 @@ $dataPoints = [];
 $counter = 0;
 $runcpu = 0;
 $headers = 0;
+$countit = 0;
 while(! feof($file))
   {
   if ($headers < 3){
@@ -16,31 +17,32 @@ while(! feof($file))
         continue;
   }
   $runcpu = $runcpu + floatval(explode(",", fgets($file))[0]);
-  echo $runcpu;
-  echo "\n";
-  if ($counter < 1){
+  if ($counter < 29){
         $counter = $counter + 1;
   }
   else{
         $counter = 0;
-        array_push($dataPoints, array("y" => ($runcpu/2), "label" => "123"));
+        array_push($dataPoints, array("y" => ($runcpu/2), "label" => $countit));
+	$countit = $countit + 1;
         $runcpu = 0;
   }
   }
 
 fclose($file);
 
+$countit = 0;
 $dataPoints2 = [];
 while(! feof($file2))
   {
-  array_push($dataPoints2, array("y" => floatval(fgets($file2))*100, "label" => "123"));
+  array_push($dataPoints2, array("y" => floatval(fgets($file2))*100, "label" => $countit));
+  $countit = $countit + 1;
   }
 
 fclose($file2);
 
 $counter = count($dataPoints2) - count($dataPoints);
 for ($i = 1; $i <= $counter; $i++) {
-    array_push($dataPoints, array("y" => 0, "label" => "123"));
+    array_push($dataPoints, array("y" => 0, "label" => ""));
 }
 
 ?>
