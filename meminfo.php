@@ -16,7 +16,7 @@ while(! feof($file))
         $headers = $headers + 1;
         continue;
   }
-  $runcpu = $runcpu + floatval(explode(",", fgets($file))[0]);
+  $runcpu = $runcpu + floatval(explode(",", fgets($file))[1]);
   if ($counter < 29){
         $counter = $counter + 1;
   }
@@ -91,7 +91,7 @@ chart2.render()
 </head>
 <body>
 Dashboard - <a href = "home.php">Home</a> <a href="perf.php">Performance Statistics</a> <a href="cpuinfo.php">CPU Usage</a> <a href="meminfo.php">Memory Usage</a>
-<h1><center>CPU Usage of Host</center></h1>
+<h1><center>Memory Usage of Host</center></h1>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
