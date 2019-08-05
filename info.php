@@ -22,7 +22,7 @@ while(! feof($file))
   }
   else{
         $counter = 0;
-        array_push($dataPoints, array("y" => ($runcpu/2), "label" => $countit));
+        array_push($dataPoints, array("y" => ($runcpu/30), "label" => $countit));
 	$countit = $countit + 1;
         $runcpu = 0;
   }
