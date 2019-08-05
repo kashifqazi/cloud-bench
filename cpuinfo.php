@@ -3,6 +3,13 @@
 
 $file = fopen("/home/ubuntu/cloud-bench/logs","r");
 $file2 = fopen("/home/ubuntu/cloud-bench/Host4","r");
+$file3 = fopen("/home/ubuntu/cloud-bench/config", "r");
+$host = explode(":",fgets($file3))[1];
+$mem = explode(":",fgets($file3))[1];
+$scale = explode(":",fgets($file3))[1];
+fclose($file3);
+
+$timeunit = $scale/5;
 
 $dataPoints = [];
 $counter = 0;
@@ -17,12 +24,12 @@ while(! feof($file))
         continue;
   }
   $runcpu = $runcpu + floatval(explode(",", fgets($file))[0]);
-  if ($counter < 29){
+  if ($counter < ($timeunit-1)){
         $counter = $counter + 1;
   }
   else{
         $counter = 0;
-        array_push($dataPoints, array("y" => ($runcpu/30), "label" => $countit));
+        array_push($dataPoints, array("y" => ($runcpu/$timeunit), "label" => $countit));
 	$countit = $countit + 1;
         $runcpu = 0;
   }
