@@ -8,7 +8,7 @@ $mem = explode(":",fgets($file3))[1];
 $scale = explode(":",fgets($file3))[1];
 fclose($file3);
 
-$file2 = fopen("/home/ubuntu/cloud-bench/traces/" . $host,"r");
+$file2 = fopen("/home/ubuntu/cloud-bench/traces/" . substr($host,0,-1),"r");
 
 $timeunit = $scale/5;
 
