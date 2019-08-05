@@ -2,12 +2,13 @@
 
 
 $file = fopen("/home/ubuntu/cloud-bench/logs","r");
-$file2 = fopen("/home/ubuntu/cloud-bench/Host4","r");
 $file3 = fopen("/home/ubuntu/cloud-bench/config", "r");
 $host = explode(":",fgets($file3))[1];
 $mem = explode(":",fgets($file3))[1];
 $scale = explode(":",fgets($file3))[1];
 fclose($file3);
+
+$file2 = fopen("/home/ubuntu/cloud-bench/traces/" . $host,"r");
 
 $timeunit = $scale/5;
 
