@@ -1,10 +1,15 @@
 # cloud-bench
 
-To use install stress-ng and cpulimit using
+To use clone from git
 
-apt install stress-ng
+From the cloud-bench directory:
 
-git clone https://github.com/opsengine/cpulimit.git
-cd cpulimit
-make
-cp src/cpulimit /usr/bin
+chmod 700 install.sh
+
+chmod 700 workload.sh
+
+./install.sh
+
+To RUN
+
+./workload.sh HostName MaxMemoryToUse TimePeriodSeconds
