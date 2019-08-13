@@ -100,7 +100,7 @@ chart2.render()
 </head>
 <body>
 <div class="header">
-  <h1>Model Cloud</h1>
+  <h1>Cloudy</h1>
   <p>The cloud workload modeling tool &copy Kashifuddin Qazi (kqazi01@manhattan.edu)</p>
 </div>
 
@@ -109,6 +109,7 @@ chart2.render()
   <a href="perf.php">Performance Stats</a>
   <a class="active" href="cpuinfo.php">CPU Usage</a>
   <a href="meminfo.php">Mem Usage</a>
+  <a href="tracechar.php">Trace Characteristics</a>
 </div>
 
 <h1><center>CPU Usage of Host</center></h1>

@@ -7,7 +7,7 @@
 <body>
 
 <div class="header">
-  <h1>Model Cloud</h1>
+  <h1>Cloudy</h1>
   <p>The cloud workload modeling tool &copy Kashifuddin Qazi (kqazi01@manhattan.edu)</p>
 </div>
 
@@ -16,6 +16,7 @@
   <a href="perf.php">Performance Stats</a>
   <a href="cpuinfo.php">CPU Usage</a>
   <a href="meminfo.php">Mem Usage</a>
+  <a href="tracechar.php">Trace Characteristics</a>
 </div>
 
 <h1><center>Welcome to the Dashboard</center></h1>
@@ -52,6 +53,24 @@ echo " seconds</td></tr>";
 echo "<tr><td>Total RAM</td><td>: ";
 echo $mem;
 echo" KB</td></tr>";
+fclose($file);
+$file = fopen("/home/ubuntu/cloud-bench/aggr","r");
+
+echo "<tr><td>Max CPU, Memory</td><td>: ";
+echo fgets($file);
+echo "</td></tr>";
+echo "<tr><td>Min CPU, Memory</td><td>: ";
+echo fgets($file);
+echo "</td></tr>";
+echo "<tr><td>Mean CPU, Memory</td><td>: ";
+echo fgets($file);
+echo "</td></tr>";
+echo "<tr><td>Median CPU, Memory</td><td>: ";
+echo fgets($file);
+echo"</td></tr>";
+echo "<tr><td>Std. Dev. CPU, Memory</td><td>: ";
+echo fgets($file);
+echo"</td></tr>";
 fclose($file);
 echo "</center>";
 echo "</h1>";

@@ -7,6 +7,10 @@ echo "Host:$1" > config
 echo "Mem:$2" >> config
 echo "Scale:$3" >> config
 
+python3 traceaggr.py $1
+sudo cp *.png /var/www/html/
+sudo cp aggr /var/www/html/
+
 atop/atopsar -c -m 5 150000 > logs &
 while IFS= read -r line
 do
