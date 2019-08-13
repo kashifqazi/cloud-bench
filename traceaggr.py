@@ -1,4 +1,7 @@
 import sys
+import numpy as np
+from statsmodels.tsa.seasonal import seasonal_decompose
+import matplotlib.pyplot as plt
 
 def maxminavgdev(filename):
 	ofc = open("aggr", 'w')
@@ -13,7 +16,7 @@ def maxminavgdev(filename):
 	npc = np.array(cpu)
 	npm = np.array(mem)
 
-	ofc.write(str(np.max(npc)) + ',' + str(np.max(npm)) + '\n' + str(np.min(npc)) + ',' + str(np.min(npm)) + '\n' + str(np.mean(npc)) + ',' str(np.mean(npm)) + '\n' + str(np.median(npc)) + ',' + str(np.median(npm)) + '\n' + str(np.std(npc)) + ',' + str(np.std(npm)) + '\n')
+	ofc.write(str(np.max(npc)) + ',' + str(np.max(npm)) + '\n' + str(np.min(npc)) + ',' + str(np.min(npm)) + '\n' + str(np.mean(npc)) + ',' + str(np.mean(npm)) + '\n' + str(np.median(npc)) + ',' + str(np.median(npm)) + '\n' + str(np.std(npc)) + ',' + str(np.std(npm)) + '\n')
 	ofc.close()
 
 def decomposecpu(filename):

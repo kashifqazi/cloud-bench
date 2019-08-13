@@ -17,3 +17,7 @@ cd cpulimit
 make
 sudo cp src/cpulimit /usr/bin/cpulimit
 cd ..
+sudo apt install python3-pip
+pip3 install numpy
+pip3 install statsmodels
+pip3 install matplotlib

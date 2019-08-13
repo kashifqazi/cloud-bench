@@ -42,7 +42,7 @@ $countit = 0;
 $dataPoints2 = [];
 while(! feof($file2))
   {
-  array_push($dataPoints2, array("y" => floatval(fgets($file2))*100, "label" => $countit));
+  array_push($dataPoints2, array("y" => floatval(explode(",",fgets($file2))[1]), "label" => $countit));
   $countit = $countit + 1;
   }
 
