@@ -24,10 +24,14 @@
 
 <table style=margin-left:auto;margin-right:auto>
 
-
-<img src = "decompcpu.png"></img>
-<img src = "decompmem.png"></img>
-<img src = "autocorcpu.png"></img>
-<img src = "autocormem.png"></img>
+<center>
+<tr><td> CPU Decomposition </td><td>Memory Decomposition</td></tr>
+<tr><td><img width = "400" src = "decompcpu.png"></img></td>
+<td><img width = "400" src = "decompmem.png"></img></td></tr>
+<tr><td> CPU Autocorrelation </td><td>Memory Autocorrelation</td></tr>
+<tr><td><img width = "400" src = "autocorcpu.png"></img></td>
+<td><img width = "400" src = "autocormem.png"></img></td></tr>
+</center>
+</table>
 </body>
 </html>
